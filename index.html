@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>BADGE.TEAM</title>
+        <link rel="stylesheet" href="assets/fonts/roboto.css">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+
+    <body>
+
+        <!-- Top menu -->
+        <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">BootZard - Bootstrap Wizard Template</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="top-navbar-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <span class="li-text">
+                                Firmware utility v0.1 BETA
+                            </span> 
+                            <span class="li-social">
+                                <a href="https://twitter.com/sha2017badge" target="_blank"><i class="fa fa-twitter"></i></a> 
+                                <a href="https://github.com/badgeteam" target="_blank"><i class="fa fa-github"></i></a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Top content -->
+        <div class="top-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
+                        <div class="f1" id="application">
+                            <h3>Starting...</h3>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+        
+        <!-- Templates -->
+        <script id="tpl-webserial" type="text/x-handlebars-template">
+            <h3>Web Serial support</h3>
+            <p>Web Serial is not supported on this device, make sure you're running Chrome 78 or later and have enabled the #enable-experimental-web-platform-features flag in chrome://flags</p>
+            <p>After enabling the flag you can click the restart button to restart the application.</p>
+            <div class="f1-buttons">
+                <button type="button" class="btn btn-next" onclick="location.reload();">Restart</button>
+            </div>
+        </script>
+
+        <script id="tpl-welcome" type="text/x-handlebars-template">
+            <h3>Loading...</h3>
+        </script>
+        
+        <script id="tpl-select-badge" type="text/x-handlebars-template">
+            <h3>Welcome</h3>
+            <p>Please select the type of badge you want to flash.</p>
+            <p>Disclaimer: <i>This tool comes with absolutely no guarantees, flashing the firmware for a wrong type of badge could result in damage to your device.</i></p>
+            <div class="form-group">
+                <select class="form-select form-control" id="badge-type">
+                    {{#each this}}
+                        <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <p>Click connect, then select the serial port to which your badge is attached.</p>
+            <div class="f1-buttons">
+                <button type="button" class="btn btn-next" onclick="app.selectBadge();">Connect</button>
+            </div>
+        </script>
+
+        <script id="tpl-error" type="text/x-handlebars-template">
+            <h3>An error occured</h3>
+            <p>{{this}}</p>
+            <div class="f1-buttons">
+                <button type="button" class="btn btn-next" onclick="location.reload();">Restart</button>
+            </div>
+        </script>
+        
+        <script id="tpl-disconnected" type="text/x-handlebars-template">
+            <h3>Disconnected</h3>
+            <p>{{this}}</p>
+            <div class="f1-buttons">
+                <button type="button" class="btn btn-next" onclick="location.reload();">Restart</button>
+            </div>
+        </script>
+        
+        <script id="tpl-message" type="text/x-handlebars-template">
+            <h3>{{title}}</h3>
+            <p>{{message}}</p>
+        </script>
+        
+        <script id="tpl-menu" type="text/x-handlebars-template">
+            <h3>{{name}}</h3>
+            <p>Connected to {{name}} badge {{mac}}. What do you want to do?</p>
+            <div class="f1-buttons">
+                <button type="button" class="btn btn-previous" onclick="app.reset();">Reboot badge</button>
+                <button type="button" class="btn btn-previous" onclick="app.erase();">Erase flash</button>
+                <button type="button" class="btn btn-next" onclick="app.flashFirmware();">Flash firmware</button>
+            </div>
+        </script>
+        
+        <script id="tpl-erase" type="text/x-handlebars-template">
+            <h3>Are you sure?</h3>
+            <p>This will erase the entire flash. Click erase to continue.</p>
+            <div class="f1-buttons">
+                <button type="button" class="btn btn-previous" onclick="app.menu();">Cancel</button>
+                <button type="button" class="btn btn-next" onclick="app.erase(true);">Erase</button>
+            </div>
+        </script>
+        
+        <script id="tpl-confirmation" type="text/x-handlebars-template">
+            <h3>{{title}}</h3>
+            <p>{{message}}</p>
+            <div class="f1-buttons">
+                <button type="button" class="btn btn-next" onclick="app.menu();">OK</button>
+            </div>
+        </script>
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/handlebars-v4.7.6.js"></script>
+        <script src="assets/js/esptool.js"></script>
+        <script src="assets/js/scripts.js"></script>
+    </body>
+</html>
