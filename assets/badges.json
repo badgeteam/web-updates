@@ -13,7 +13,7 @@
     },
     {
         "id": "pixel",
-        "name": "Pixel Badge",
+        "name": "Pixel Badge 🌈😵‍💫",
         "flashsize": 16,
         "baudrate": 115200,
         "flash": [
@@ -21,6 +21,18 @@
             {"filename": "pixel/pixelv1_4MB.bin", "address": 32768, "name": "partition table"},
             {"filename": "pixel/ota_data_initial.bin", "address": 53248, "name": "OTA data"},
             {"filename": "pixel/firmware.bin", "address": 65536, "name": "firmware"}
+        ]
+    },
+    {
+        "id": "campzone2020",
+        "name": "CampZone 2020 Ærpane 🔊",
+        "flashsize": 16,
+        "baudrate": 115200,
+        "flash": [
+            {"filename": "pixel/bootloader.bin", "address": 4096, "name": "bootloader"},
+            {"filename": "pixel/campzone2020_16MB.bin", "address": 32768, "name": "partition table"},
+            {"filename": "pixel/ota_data_initial.bin", "address": 53248, "name": "OTA data"},
+            {"filename": "pixel/campzon2020.bin", "address": 65536, "name": "firmware"}
         ]
     }
 ]
