@@ -14,13 +14,25 @@
     {
         "id": "pixel",
         "name": "Pixel Badge 🌈😵‍💫",
-        "flashsize": 16,
+        "flashsize": 4,
         "baudrate": 115200,
         "flash": [
             {"filename": "pixel/bootloader.bin", "address": 4096, "name": "bootloader"},
             {"filename": "pixel/pixelv1_4MB.bin", "address": 32768, "name": "partition table"},
             {"filename": "pixel/ota_data_initial.bin", "address": 53248, "name": "OTA data"},
             {"filename": "pixel/pixel.bin", "address": 65536, "name": "firmware"}
+        ]
+    },
+    {
+        "id": "campzone2019",
+        "name": "CampZone 2019 🌈",
+        "flashsize": 4,
+        "baudrate": 115200,
+        "flash": [
+            {"filename": "pixel/bootloader.bin", "address": 4096, "name": "bootloader"},
+            {"filename": "pixel/pixelv1_4MB.bin", "address": 32768, "name": "partition table"},
+            {"filename": "pixel/ota_data_initial.bin", "address": 53248, "name": "OTA data"},
+            {"filename": "campzone2019/campzone2019.bin", "address": 65536, "name": "firmware"}
         ]
     },
     {
