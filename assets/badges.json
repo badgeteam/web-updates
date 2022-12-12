@@ -12,6 +12,19 @@
         ]
     },
     {
+        "id": "ctf",
+        "name": "Super Secret CTF",
+        "flashsize": 4,
+        "baudrate": 115200,
+        "flash": [
+            {"filename": "ctf/bootloader.bin", "address": 4096, "name": "bootloader"},
+            {"filename": "ctf/pixelv1_4MB.bin", "address": 32768, "name": "partition table"},
+            {"filename": "ctf/nvs.bin", "address": 36864, "name": "NVS data"},
+            {"filename": "ctf/ota_data_initial.bin", "address": 53248, "name": "OTA data"},
+            {"filename": "ctf/ctf.bin", "address": 65536, "name": "firmware"}
+        ]
+    },
+    {
         "id": "pixel",
         "name": "Pixel Badge 🌈😵‍💫",
         "flashsize": 4,
